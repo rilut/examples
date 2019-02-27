@@ -48,12 +48,12 @@ spec:
         {{- end }}
           configMap:
             name: {{ template "fullname" . }}-flink-config
-        - name: {{ template "fullname" . }}-hadoop-config
-        {{- if .Values.taskPersistence.enabled }}
-          persistentVolumeClaim:
-            claimName: {{ .Values.taskPersistence.existingClaim | default (include "fullname" .) }}
-        {{- else }}
-          emptyDir: {}
-        {{- end }}
+        # - name: {{ template "fullname" . }}-hadoop-config
+        # {{- if .Values.taskPersistence.enabled }}
+        #   persistentVolumeClaim:
+        #     claimName: {{ .Values.taskPersistence.existingClaim | default (include "fullname" .) }}
+        # {{- else }}
+        #   emptyDir: {}
+        # {{- end }}
           configMap:
             name: {{ template "fullname" . }}-hadoop-config
