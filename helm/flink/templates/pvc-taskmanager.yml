@@ -1,0 +1,25 @@
+
+{{- if and .Values.taskPersistence.enabled (not .Values.taskPersistence.existingClaim) }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: "{{ template "fullname" . }}-taskmanager"
+  labels:
+    app: "{{ template "fullname" . }}-taskmanager"
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  accessModes:
+    - {{ .Values.taskPersistence.accessMode | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.taskPersistence.size | quote }}
+{{- if .Values.taskPersistence.storageClass }}
+{{- if (eq "-" .Values.taskPersistence.storageClass) }}
+  storageClassName: ""
+{{- else }}
+  storageClassName: "{{ .Values.taskPersistence.storageClass }}"
+{{- end }}
+{{- end }}
+{{- end }}
