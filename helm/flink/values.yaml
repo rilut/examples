@@ -31,3 +31,12 @@ hadoop:
     <?xml version="1.0"?>
     <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
     <configuration/>
+
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 2Gi
+logsPersistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 2Gi
