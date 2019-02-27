@@ -48,7 +48,7 @@ spec:
         # {{- end }}
           configMap:
             name: {{ template "fullname" . }}-flink-config
-        # - name: {{ template "fullname" . }}-hadoop-config
+        - name: {{ template "fullname" . }}-hadoop-config
         # {{- if .Values.taskPersistence.enabled }}
         #   persistentVolumeClaim:
         #     claimName: {{ .Values.taskPersistence.existingClaim | default (include "fullname" .) }}

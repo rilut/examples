@@ -52,8 +52,8 @@ spec:
         # {{- else }}
         #   emptyDir: {}
         # {{- end }}
-        #   configMap:
-        #     name: {{ template "fullname" . }}-flink-config
+          configMap:
+            name: {{ template "fullname" . }}-flink-config
         - name: {{ template "fullname" . }}-hadoop-config
         # {{- if .Values.persistence.enabled }}
         #   persistentVolumeClaim:
