@@ -3,9 +3,9 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: "{{ template "fullname" . }}-flink-taskmanager"
+  name: "{{ template "fullname" . }}-taskmanager"
   labels:
-    app: "{{ template "fullname" . }}-flink-taskmanager"
+    app: "{{ template "fullname" . }}-taskmanager"
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
