@@ -2,9 +2,9 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: "{{ template "fullname" . }}-flink-jobmanager"
+  name: "{{ template "fullname" . }}-jobmanager"
   labels:
-    app: "{{ template "fullname" . }}-flink-jobmanager"
+    app: "{{ template "fullname" . }}-jobmanager"
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
