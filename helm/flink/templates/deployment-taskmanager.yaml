@@ -35,8 +35,20 @@ spec:
             memory: {{ .Values.resources.taskmanager.requests.memory }}
         volumeMounts:
         - name: {{ template "fullname" . }}-flink-config
+        {{- if .Values.taskPersistence.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.taskPersistence.existingClaim | default (include "fullname" .) }}
+        {{- else }}
+          emptyDir: {}
+        {{- end }}
           mountPath: /etc/flink
         - name: {{ template "fullname" . }}-hadoop-config
+        {{- if .Values.taskPersistence.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.taskPersistence.existingClaim | default (include "fullname" .) }}
+        {{- else }}
+          emptyDir: {}
+        {{- end }}
           mountPath: /etc/hadoop/conf
       volumes:
         - name: {{ template "fullname" . }}-flink-config
