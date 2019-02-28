@@ -12,6 +12,7 @@ metadata:
 spec:
   accessModes:
     - {{ .Values.taskPersistence.accessMode | quote }}
+  storageClassName: azurefile
   resources:
     requests:
       storage: {{ .Values.taskPersistence.size | quote }}

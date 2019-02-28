@@ -46,20 +46,20 @@ spec:
           mountPath: /etc/hadoop/conf
       volumes:
         - name: {{ template "fullname" . }}-flink-config
-        # {{- if .Values.persistence.enabled }}
-        #   persistentVolumeClaim:
-        #     claimName: {{ .Values.persistence.existingClaim | default (include "fullname" .) }}
-        # {{- else }}
-        #   emptyDir: {}
-        # {{- end }}
+        {{- if .Values.persistence.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.persistence.existingClaim | default (include "fullname" .) }}
+        {{- else }}
+          emptyDir: {}
+        {{- end }}
           configMap:
             name: {{ template "fullname" . }}-flink-config
         - name: {{ template "fullname" . }}-hadoop-config
-        # {{- if .Values.persistence.enabled }}
-        #   persistentVolumeClaim:
-        #     claimName: {{ .Values.persistence.existingClaim | default (include "fullname" .) }}
-        # {{- else }}
-        #   emptyDir: {}
-        # {{- end }}
+        {{- if .Values.persistence.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.persistence.existingClaim | default (include "fullname" .) }}
+        {{- else }}
+          emptyDir: {}
+        {{- end }}
           configMap:
             name: {{ template "fullname" . }}-hadoop-config
